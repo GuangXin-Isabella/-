@@ -28,8 +28,10 @@ public class UserController extends GenericController {
 
   //返回jsp视图展示
   @RequestMapping(value = "/getUserModel", method = RequestMethod.GET)
-  public ModelAndView getUsers1(@RequestParam Integer userId, @RequestParam Integer password) {
-    if (userService.isUserExist(userId, password)) {
+  public ModelAndView getUsers1(@RequestParam(value = "userAccount") Integer userAccount,
+                                @RequestParam(value = "userPassword") Integer
+                                  password) {
+    if (userService.isUserExist(userAccount, password)) {
       ModelAndView modelAndView = new ModelAndView();
       modelAndView.setViewName("index");
       return modelAndView;
